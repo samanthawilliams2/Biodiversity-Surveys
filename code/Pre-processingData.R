@@ -395,8 +395,10 @@ head(piscs)
 piscs.longterm = full_join(piscs, piscs.2025.sum)
 # use this for your analysis, noting that you may need to adjust site names to match between old and new datasets
 
+
+
 ##### coral juveniles 2019-2021 #####
-juveniles = read.csv("ClassDataset-coraljuveniles_2019-2021.csv")
+juveniles = read.csv("data/ClassDataset-coraljuveniles_2019-2021.csv")
 head(juveniles)
 juveniles=juveniles %>% mutate(Year=Time, Quadrat=factor(Quadrat))
 sample.size = juveniles %>%
@@ -411,10 +413,32 @@ reps.per.site.juves <- sample.size %>%
 
 
 ##### coral juveniles 2025 and merging #####
-juveniles.2025 = read.csv("ClassData_CoralJuveniles.csv", strip.white = T, header = T)
+juveniles.2025 = read.csv("data/ClassData_CoralJuveniles.csv", strip.white = T, header = T)
 head(juveniles.2025)
+
+colnames(juveniles.2025) <- as.character(juveniles.2025[1, ])
+
+juveniles.2025 <- juveniles.2025[-c(1, 2), ]
+
+rownames(juveniles.2025) <- NULL
+
+juveniles.2025 <- juveniles.2025 %>%
+  mutate(
+    Year = factor(Year),
+    Site = factor(Site),
+    Quadrat = factor(Quadrat),
+    Size = as.numeric(Size),
+    Count = as.numeric(Count),
+    Morphology = factor(Morphology)
+  )
+
 juveniles.2025 = juveniles.2025 %>%
   mutate(Quadrat=factor(Quadrat))
+
+juveniles$Year <- as.factor(juveniles$Year)
+juveniles.2025$Year <- as.factor(juveniles.2025$Year)
+
+juveniles.longterm <- full_join(juveniles[,-1], juveniles.2025[,-1])
 
 juveniles.longterm = full_join(juveniles[,-1], juveniles.2025[,-1])
 # use this for analysis, noting that you may need to rename sites to match between datasets 

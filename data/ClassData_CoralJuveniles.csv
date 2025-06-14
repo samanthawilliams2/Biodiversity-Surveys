@@ -1,0 +1,406 @@
+Hi students! Please make sure to enter your zeros -- NOT seeing a fish / coral is just as informative as seeing it. ,,,,,,
+BuddyPair,Year,Site,Quadrat,Size,Count,Morphology
+Taylor_Gemma,2025,Cattle Bay,1,1,0,Branching
+Taylor_Gemma,2025,Cattle Bay,1,2,0,Branching
+Taylor_Gemma,2025,Cattle Bay,1,3,0,Branching
+Taylor_Gemma,2025,Cattle Bay,1,4,0,Branching
+Taylor_Gemma,2025,Cattle Bay,1,1,0,Other
+Taylor_Gemma,2025,Cattle Bay,1,2,0,Other
+Taylor_Gemma,2025,Cattle Bay,1,3,0,Other
+Taylor_Gemma,2025,Cattle Bay,1,4,0,Other
+D_J,2025,Pioneer,1,1,2,Other
+D_J,2025,Pioneer,1,2,1,Other
+D_J,2025,Pioneer,1,3,1,Other
+D_J,2025,Cattle Bay,3,4,1,Other
+Alex_Lambo,2025,Cattle Bay,1,1,0,Branching
+Alex_Lambo,2025,Cattle Bay,1,2,0,Branching
+Alex_Lambo,2025,Cattle Bay,1,3,0,Branching
+Alex_Lambo,2025,Cattle Bay,1,4,0,Branching
+Alex_Lambo,2025,Cattle Bay,1,1,0,Other
+Alex_Lambo,2025,Cattle Bay,1,2,0,Other
+Alex_Lambo,2025,Cattle Bay,1,3,0,Other
+Alex_Lambo,2025,Cattle Bay,1,4,0,Other
+Alex_Lambo,2025,Cattle Bay,2,1,0,Branching
+Alex_Lambo,2025,Cattle Bay,2,2,0,Branching
+Alex_Lambo,2025,Cattle Bay,2,3,0,Branching
+Alex_Lambo,2025,Cattle Bay,2,4,0,Branching
+Alex_Lambo,2025,Cattle Bay,2,1,0,Other
+Alex_Lambo,2025,Cattle Bay,2,2,0,Other
+Alex_Lambo,2025,Cattle Bay,2,3,0,Other
+Alex_Lambo,2025,Cattle Bay,2,4,0,Other
+Alex_Lambo,2025,Cattle Bay,3,1,0,Branching
+Alex_Lambo,2025,Cattle Bay,3,2,0,Branching
+Alex_Lambo,2025,Cattle Bay,3,3,0,Branching
+Alex_Lambo,2025,Cattle Bay,3,4,0,Branching
+Alex_Lambo,2025,Cattle Bay,3,1,0,Other
+Alex_Lambo,2025,Cattle Bay,3,2,1,Other
+Alex_Lambo,2025,Cattle Bay,3,3,0,Other
+Alex_Lambo,2025,Cattle Bay,3,4,4,Other
+Jake_Will,2025,Pioneer,1,1,2,Other
+Jake_Will,2025,Pioneer,1,2,0,Other
+Jake_Will,2025,Pioneer,1,3,0,Other
+Jake_Will,2025,Pioneer,1,4,1,Other
+Jake_Will,2025,Pioneer,1,1,1,Branching
+Jake_Will,2025,Pioneer,1,2,1,Branching
+Jake_Will,2025,Pioneer,1,3,0,Branching
+Jake_Will,2025,Pioneer,1,4,1,Branching
+Jake_Will,2025,Cattle Bay,1,1,0,Other
+Jake_Will,2025,Cattle Bay,1,2,1,Other
+Jake_Will,2025,Cattle Bay,1,3,0,Other
+Jake_Will,2025,Cattle Bay,1,4,1,Other
+Jake_Will,2025,Cattle Bay,1,1,3,Branching
+Jake_Will,2025,Cattle Bay,1,2,1,Branching
+Jake_Will,2025,Cattle Bay,1,3,0,Branching
+Jake_Will,2025,Cattle Bay,1,4,1,Branching
+Alex_Lambo,2025,Pioneer ,1,1,0,Branching
+Alex_Lambo,2025,Pioneer ,1,2,0,Branching
+Alex_Lambo,2025,Pioneer ,1,3,0,Branching
+Alex_Lambo,2025,Pioneer ,1,4,0,Branching
+Alex_Lambo,2025,Pioneer ,1,1,0,Other
+Alex_Lambo,2025,Pioneer ,1,2,0,Other
+Alex_Lambo,2025,Pioneer ,1,3,0,Other
+Alex_Lambo,2025,Pioneer ,1,4,0,Other
+Alex_Lambo,2025,Pioneer ,2,1,0,Branching
+Alex_Lambo,2025,Pioneer ,2,2,0,Branching
+Alex_Lambo,2025,Pioneer ,2,3,0,Branching
+Alex_Lambo,2025,Pioneer ,2,4,0,Branching
+Alex_Lambo,2025,Pioneer ,2,1,1,Other
+Alex_Lambo,2025,Pioneer ,2,2,0,Other
+Alex_Lambo,2025,Pioneer ,2,3,0,Other
+Alex_Lambo,2025,Pioneer ,2,4,0,Other
+Alex_Lambo,2025,Pioneer ,3,1,0,Branching
+Alex_Lambo,2025,Pioneer ,3,2,0,Branching
+Alex_Lambo,2025,Pioneer ,3,3,0,Branching
+Alex_Lambo,2025,Pioneer ,3,4,0,Branching
+Alex_Lambo,2025,Pioneer ,3,1,0,Other
+Alex_Lambo,2025,Pioneer ,3,2,0,Other
+Alex_Lambo,2025,Pioneer ,3,3,0,Other
+Alex_Lambo,2025,Pioneer ,3,4,0,Other
+Moni_Syd,2025,Pioneer,1,2,1,Other
+Moni_Syd,2025,Pioneer,1,4,1,Other
+Moni_Syd,2025,Pioneer,2,4,1,Other
+Moni_Syd,2025,Pioneer,3,3,1,Other
+Moni_Syd,2025,Cattle Bay,1,1,1,Branching
+Moni_Syd,2025,Cattle Bay,1,1,1,Other
+Moni_Syd,2025,Cattle Bay,1,2,1,Other
+Moni_Syd,2025,Cattle Bay,2,2,1,Branching
+Moni_Syd,2025,Cattle Bay,2,3,1,Other
+Moni_Syd,2025,Cattle Bay,3,3,,Branching
+Samantha_Hannah,2025,Pioneer,1,1,0,Branching
+Samantha_Hannah,2025,Pioneer,1,2,0,Branching
+Samantha_Hannah,2025,Pioneer,1,3,0,Branching
+Samantha_Hannah,2025,Pioneer,1,4,0,Branching
+Samantha_Hannah,2025,Pioneer,1,1,0,Other
+Samantha_Hannah,2025,Pioneer,1,2,0,Other
+Samantha_Hannah,2025,Pioneer,1,3,0,Other
+Samantha_Hannah,2025,Pioneer,1,4,0,Other
+Samantha_Hannah,2025,Pioneer,2,1,0,Branching
+Samantha_Hannah,2025,Pioneer,2,2,0,Branching
+Samantha_Hannah,2025,Pioneer,2,3,0,Branching
+Samantha_Hannah,2025,Pioneer,2,4,0,Branching
+Samantha_Hannah,2025,Pioneer,2,1,0,Other
+Samantha_Hannah,2025,Pioneer,2,2,3,Other
+Samantha_Hannah,2025,Pioneer,2,3,1,Other
+Samantha_Hannah,2025,Pioneer,2,4,0,Other
+Sarah_Tristan,2025,Pioneer,2,3,1,Other
+Sarah_Tristan,2025,Pioneer,3,3,1,Other
+Sarah_Tristan,2025,Pioneer,3,4,1,Other
+Sarah_Tristan,2025,Cattle Bay,1,1,1,Branching
+Sarah_Tristan,2025,Cattle Bay,1,2,2,Branching
+Sarah_Tristan,2025,Cattle Bay,1,2,2,Other
+Sarah_Tristan,2025,Cattle Bay,1,4,2,Other
+Sarah_Tristan,2025,Cattle Bay,2,4,1,Other
+Sarah_Tristan,2025,Cattle Bay,2,4,3,Other
+adith_emmanuel,2025,Cattle Bay,1,3,1,Branching
+adith_emmanuel,2025,Cattle Bay,2,,0,
+adith_emmanuel,2025,Cattle Bay,3,,0,
+adith_emmanuel,2025,Pioneer,1,,0,
+adith_emmanuel,2025,Pioneer,2,,0,
+adith_emmanuel,2025,Pioneer,3,,0,
+Samantha_Hannah,2025,Pioneer,3,1,0,Branching
+Samantha_Hannah,2025,Pioneer,3,2,0,Branching
+Samantha_Hannah,2025,Pioneer,3,3,0,Branching
+Samantha_Hannah,2025,Pioneer,3,4,0,Branching
+Samantha_Hannah,2025,Pioneer,3,1,0,Other
+Samantha_Hannah,2025,Pioneer,3,2,2,Other
+Samantha_Hannah,2025,Pioneer,3,3,0,Other
+Samantha_Hannah,2025,Pioneer,3,4,0,Other
+Samantha_Hannah,2025,Cattle Bay,1,1,0,Branching
+Samantha_Hannah,2025,Cattle Bay,1,2,0,Branching
+Samantha_Hannah,2025,Cattle Bay,1,3,1,Branching
+Samantha_Hannah,2025,Cattle Bay,1,4,0,Branching
+Samantha_Hannah,2025,Cattle Bay,1,1,0,Other
+Samantha_Hannah,2025,Cattle Bay,1,2,1,Other
+Samantha_Hannah,2025,Cattle Bay,1,3,0,Other
+Samantha_Hannah,2025,Cattle Bay,1,4,0,Other
+Samantha_Hannah,2025,Cattle Bay,2,1,0,Branching
+Samantha_Hannah,2025,Cattle Bay,2,2,1,Branching
+Samantha_Hannah,2025,Cattle Bay,2,3,0,Branching
+Samantha_Hannah,2025,Cattle Bay,2,4,0,Branching
+Samantha_Hannah,2025,Cattle Bay,2,1,0,Other
+Samantha_Hannah,2025,Cattle Bay,2,2,0,Other
+Samantha_Hannah,2025,Cattle Bay,2,3,0,Other
+Samantha_Hannah,2025,Cattle Bay,2,4,2,Other
+Samantha_Hannah,2025,Cattle Bay,3,1,0,Branching
+Samantha_Hannah,2025,Cattle Bay,3,2,0,Branching
+Samantha_Hannah,2025,Cattle Bay,3,3,1,Branching
+Samantha_Hannah,2025,Cattle Bay,3,4,0,Branching
+Samantha_Hannah,2025,Cattle Bay,3,1,1,Other
+Samantha_Hannah,2025,Cattle Bay,3,2,0,Other
+Samantha_Hannah,2025,Cattle Bay,3,3,0,Other
+Samantha_Hannah,2025,Cattle Bay,3,4,1,Other
+Samantha_Hannah,2025,NE Orpheus,1,1,0,Branching
+Samantha_Hannah,2025,NE Orpheus,1,2,0,Branching
+Samantha_Hannah,2025,NE Orpheus,1,3,2,Branching
+Samantha_Hannah,2025,NE Orpheus,1,4,2,Branching
+Samantha_Hannah,2025,NE Orpheus,1,1,3,Other
+Samantha_Hannah,2025,NE Orpheus,1,2,0,Other
+Samantha_Hannah,2025,NE Orpheus,1,3,1,Other
+Samantha_Hannah,2025,NE Orpheus,1,4,1,Other
+Samantha_Hannah,2025,NE Orpheus,2,1,1,Branching
+Samantha_Hannah,2025,NE Orpheus,2,2,2,Branching
+Samantha_Hannah,2025,NE Orpheus,2,3,1,Branching
+Samantha_Hannah,2025,NE Orpheus,2,3,0,Branching
+Samantha_Hannah,2025,NE Orpheus,2,1,0,Other
+Samantha_Hannah,2025,NE Orpheus,2,2,2,Other
+Samantha_Hannah,2025,NE Orpheus,2,3,0,Other
+Samantha_Hannah,2025,NE Orpheus,2,4,0,Other
+Samantha_Hannah,2025,NE Orpheus,3,1,0,Branching
+Samantha_Hannah,2025,NE Orpheus,3,2,0,Branching
+Samantha_Hannah,2025,NE Orpheus,3,3,1,Branching
+Samantha_Hannah,2025,NE Orpheus,3,4,0,Branching
+Samantha_Hannah,2025,NE Orpheus,3,1,0,Other
+Samantha_Hannah,2025,NE Orpheus,3,2,2,Other
+Samantha_Hannah,2025,NE Orpheus,3,3,1,Other
+Samantha_Hannah,2025,NE Orpheus,3,4,1,Other
+Samantha_Hannah,2025,Fantome,1,1,2,Branching
+Samantha_Hannah,2025,Fantome,1,2,0,Branching
+Samantha_Hannah,2025,Fantome,1,3,3,Branching
+Samantha_Hannah,2025,Fantome,1,4,0,Branching
+Samantha_Hannah,2025,Fantome,1,1,1,Other
+Samantha_Hannah,2025,Fantome,1,2,0,Other
+Samantha_Hannah,2025,Fantome,1,3,2,Other
+Samantha_Hannah,2025,Fantome,1,4,1,Other
+Samantha_Hannah,2025,Fantome,2,1,1,Branching
+Samantha_Hannah,2025,Fantome,2,2,1,Branching
+Samantha_Hannah,2025,Fantome,2,3,0,Branching
+Samantha_Hannah,2025,Fantome,2,4,0,Branching
+Samantha_Hannah,2025,Fantome,2,1,1,Other
+Samantha_Hannah,2025,Fantome,2,2,2,Other
+Samantha_Hannah,2025,Fantome,2,3,1,Other
+Samantha_Hannah,2025,Fantome,2,4,0,Other
+Samantha_Hannah,2025,Fantome,3,1,1,Branching
+Samantha_Hannah,2025,Fantome,3,2,0,Branching
+Samantha_Hannah,2025,Fantome,3,3,1,Branching
+Samantha_Hannah,2025,Fantome,3,4,0,Branching
+Samantha_Hannah,2025,Fantome,3,1,3,Other
+Samantha_Hannah,2025,Fantome,3,2,2,Other
+Samantha_Hannah,2025,Fantome,3,3,1,Other
+Samantha_Hannah,2025,Fantome,3,4,0,Other
+Jake_Will,2025,NE Orpheus,1,1,0,Branching
+Jake_Will,2025,NE Orpheus,1,2,1,Branching
+Jake_Will,2025,NE Orpheus,1,3,0,Branching
+Jake_Will,2025,NE Orpheus,1,4,1,Branching
+Jake_Will,2025,NE Orpheus,1,1,1,Other
+Jake_Will,2025,NE Orpheus,1,2,1,Other
+Jake_Will,2025,NE Orpheus,1,3,1,Other
+Jake_Will,2025,NE Orpheus,1,4,0,Other
+Jake_Will,2025,Fantome,1,1,0,Branching
+Jake_Will,2025,Fantome,1,2,0,Branching
+Jake_Will,2025,Fantome,1,3,0,Branching
+Jake_Will,2025,Fantome,1,4,1,Branching
+Jake_Will,2025,Fantome,1,1,1,Other
+Jake_Will,2025,Fantome,1,2,2,Other
+Jake_Will,2025,Fantome,1,3,1,Other
+Jake_Will,2025,Fantome,1,4,0,Other
+Sarah_Tristan,2025,Fantome,2,1,3,Other
+Sarah_Tristan,2025,Fantome,2,4,1,Other
+Sarah_Tristan,2025,Fantome,3,4,1,Other
+Moni_Syd,2025,NE ORIS,1,0,0,0
+Moni_Syd,2025,NE ORIS,2,3,1,Branching
+Moni_Syd,2025,NE ORIS,2,2,2,Other
+Moni_Syd,2025,NE ORIS,2,3,1,Other
+Moni_Syd,2025,NE ORIS,3,0,0,0
+Moni_Syd,2025,Fantom,1,2,1,Branching
+Moni_Syd,2025,Fantom,1,2,1,Other
+Moni_Syd,2025,Fantom,2,0,0,0
+Moni_Syd,2025,Fantom,3,2,1,Branching
+D_J,2025,NE ORIS,1,1,0,0
+D_J,2025,NE ORIS,1,2,0,0
+D_J,2025,NE ORIS,1,3,0,0
+D_J,2025,NE ORIS,1,4,0,0
+D_J,2025,NE ORIS,2,1,0,0
+D_J,2025,NE ORIS,2,2,0,0
+D_J,2025,NE ORIS,2,3,1,Other
+D_J,2025,NE ORIS,2,4,0,0
+D_J,2025,NE ORIS,3,1,0,0
+D_J,2025,NE ORIS,3,2,0,0
+D_J,2025,NE ORIS,3,3,0,0
+D_J,2025,NE ORIS,3,4,0,0
+D_J,2025,Fantom,1,1,0,0
+D_J,2025,Fantom,1,2,0,0
+D_J,2025,Fantom,1,3,0,0
+D_J,2025,Fantom,1,4,0,0
+D_J,2025,Fantom,2,1,0,0
+D_J,2025,Fantom,2,2,0,0
+D_J,2025,Fantom,2,3,0,0
+D_J,2025,Fantom,2,4,0,0
+D_J,2025,Fantom,3,1,0,0
+D_J,2025,Fantom,3,2,0,0
+D_J,2025,Fantom,3,3,0,0
+D_J,2025,Fantom,3,4,0,0
+Libbie_Laura,2025,Pioneer Bay,1,1,1,other
+Libbie_Laura,2025,Pioneer Bay,1,2,1,other
+Libbie_Laura,2025,Pioneer Bay,1,3,1,other
+Libbie_Laura,2025,Pioneer Bay,1,4,0,other
+Libbie_Laura,2025,Pioneer Bay,2,1,0,other
+Libbie_Laura,2025,Pioneer Bay,2,2,1,other
+Libbie_Laura,2025,Pioneer Bay,2,3,2,other
+Libbie_Laura,2025,Pioneer Bay,2,4,1,other
+Libbie_Laura,2025,Pioneer Bay,3,1,1,other
+Libbie_Laura,2025,Pioneer Bay,3,2,0,other
+Libbie_Laura,2025,Pioneer Bay,3,3,0,other
+Libbie_Laura,2025,Pioneer Bay,3,4,0,other
+Libbie_Laura,2025,Cattle Bay,1,1,0,other
+Libbie_Laura,2025,Cattle Bay,1,2,1,other
+Libbie_Laura,2025,Cattle Bay,1,3,1,other
+Libbie_Laura,2025,Cattle Bay,1,4,1,other
+Libbie_Laura,2025,Cattle Bay,2,1,0,other
+Libbie_Laura,2025,Cattle Bay,2,2,0,other
+Libbie_Laura,2025,Cattle Bay,2,3,1,Branching
+Libbie_Laura,2025,Cattle Bay,2,4,1,other
+Libbie_Laura,2025,Cattle Bay,3,1,2,other
+Libbie_Laura,2025,Cattle Bay,3,2,0,other
+Libbie_Laura,2025,Cattle Bay,3,3,0,other
+Libbie_Laura,2025,Cattle Bay,3,4,0,other
+Libbie_Laura,2025,NE Orpheus,1,1,1,other
+Libbie_Laura,2025,NE Orpheus,1,2,0,other
+Libbie_Laura,2025,NE Orpheus,1,3,3,branching/other
+Libbie_Laura,2025,NE Orpheus,1,4,0,other
+Libbie_Laura,2025,NE Orpheus,2,1,0,other
+Libbie_Laura,2025,NE Orpheus,2,2,0,other
+Libbie_Laura,2025,NE Orpheus,2,3,1,other
+Libbie_Laura,2025,NE Orpheus,2,4,1,other
+Libbie_Laura,2025,NE Orpheus,3,1,0,other
+Libbie_Laura,2025,NE Orpheus,3,2,0,other
+Libbie_Laura,2025,NE Orpheus,3,3,1,other
+Libbie_Laura,2025,NE Orpheus,3,4,0,other
+Libbie_Laura,2025,Fantome,1,1,0,other
+Libbie_Laura,2025,Fantome,1,2,0,other
+Libbie_Laura,2025,Fantome,1,3,1,other
+Libbie_Laura,2025,Fantome,1,4,1,other
+Libbie_Laura,2025,Fantome,2,1,0,other
+Libbie_Laura,2025,Fantome,2,2,0,other
+Libbie_Laura,2025,Fantome,2,3,0,other
+Libbie_Laura,2025,Fantome,2,4,0,other
+Libbie_Laura,2025,Fantome,3,1,0,other
+Libbie_Laura,2025,Fantome,3,2,0,other
+Libbie_Laura,2025,Fantome,3,3,2,Brancing
+Libbie_Laura,2025,Fantome,3,4,1,Branching
+Michael_Madhu,2025,Pioneer,1,3,1,Other
+Michael_Madhu,2025,Pioneer,1,4,2,Other
+Michael_Madhu,2025,Pioneer,2,0,0,N/A
+Michael_Madhu,2025,Pioneer,3,0,0,N/A
+Michael_Madhu,2025,Cattle Bay,1,1,3,Other
+Michael_Madhu,2025,Cattle Bay,1,2,2,Other
+Michael_Madhu,2025,Cattle Bay,1,3,2,Other
+Michael_Madhu,2025,Cattle Bay,1,4,1,Branching
+Michael_Madhu,2025,Cattle Bay,1,4,4,Branching
+Michael_Madhu,2025,Cattle Bay,2,1,1,Branching
+Michael_Madhu,2025,Cattle Bay,2,2,1,Branching
+Michael_Madhu,2025,Cattle Bay,2,2,1,Other
+Michael_Madhu,2025,Cattle Bay,2,4,1,Branching
+Michael_Madhu,2025,Cattle Bay,3,1,3,Other
+Michael_Madhu,2025,Cattle Bay,3,2,1,Branching
+Michael_Madhu,2025,Cattle Bay,3,2,1,Other
+Michael_Madhu,2025,Cattle Bay,3,3,1,Other
+Michael_Madhu,2025,Cattle Bay,3,4,1,Other
+Michael_Madhu,2025,NE Orpheus,1,2,2,Other
+Michael_Madhu,2025,NE Orpheus,2,1,8,Branching
+Michael_Madhu,2025,NE Orpheus,2,1,10,Other
+Michael_Madhu,2025,NE Orpheus,3,4,3,Other
+Michael_Madhu,2025,Fantome,1,2,1,Other
+Michael_Madhu,2025,Fantome,1,2,1,Branching
+Michael_Madhu,2025,Fantome,1,4,1,Other
+Michael_Madhu,2025,Fantome,2,1,1,Other
+Michael_Madhu,2025,Fantome,2,2,1,Other
+Michael_Madhu,2025,Fantome,2,3,1,Other
+Michael_Madhu,2025,Fantome,3,3,1,Branching
+Mack_Emma,2025,Pioneer,1,1,0,0
+Mack_Emma,2025,Pioneer,1,2,0,0
+Mack_Emma,2025,Pioneer,1,3,1,Other
+Mack_Emma,2025,Pioneer,1,4,1,Other
+Mack_Emma,2025,Pioneer,2,1,0,0
+Mack_Emma,2025,Pioneer,2,2,0,0
+Mack_Emma,2025,Pioneer,2,3,0,0
+Mack_Emma,2025,Pioneer,2,4,0,0
+Mack_Emma,2025,Pioneer,3,1,1,Other
+Mack_Emma,2025,Pioneer,3,2,1,Other
+Mack_Emma,2025,Pioneer,3,3,1,Other
+Mack_Emma,2025,Pioneer,3,4,0,0
+Mack_Emma,2025,Cattle Bay,1,1,0,0
+Mack_Emma,2025,Cattle Bay,1,2,0,0
+Mack_Emma,2025,Cattle Bay,1,3,0,0
+Mack_Emma,2025,Cattle Bay,1,4,0,0
+Mack_Emma,2025,Cattle Bay,2,1,0,0
+Mack_Emma,2025,Cattle Bay,2,2,0,0
+Mack_Emma,2025,Cattle Bay,2,3,0,0
+Mack_Emma,2025,Cattle Bay,2,4,0,0
+Mack_Emma,2025,Cattle Bay,3,1,0,0
+Mack_Emma,2025,Cattle Bay,3,2,0,0
+Mack_Emma,2025,Cattle Bay,3,3,0,0
+Mack_Emma,2025,Cattle Bay,3,4,0,0
+Mack_Emma,2025,NE Orpheus,1,1,0,0
+Mack_Emma,2025,NE Orpheus,1,2,0,0
+Mack_Emma,2025,NE Orpheus,1,3,0,0
+Mack_Emma,2025,NE Orpheus,1,4,0,0
+Mack_Emma,2025,NE Orpheus,2,1,0,0
+Mack_Emma,2025,NE Orpheus,2,2,0,0
+Mack_Emma,2025,NE Orpheus,2,3,0,0
+Mack_Emma,2025,NE Orpheus,2,4,0,0
+Mack_Emma,2025,NE Orpheus,3,1,0,0
+Mack_Emma,2025,NE Orpheus,3,2,0,0
+Mack_Emma,2025,NE Orpheus,3,3,0,0
+Mack_Emma,2025,NE Orpheus,3,4,0,0
+Mack_Emma,2025,Fantome,1,1,0,0
+Mack_Emma,2025,Fantome,1,2,0,0
+Mack_Emma,2025,Fantome,1,3,0,0
+Mack_Emma,2025,Fantome,1,4,0,0
+Mack_Emma,2025,Fantome,2,1,0,0
+Mack_Emma,2025,Fantome,2,2,0,0
+Mack_Emma,2025,Fantome,2,3,0,0
+Mack_Emma,2025,Fantome,2,4,0,0
+Mack_Emma,2025,Fantome,3,1,0,0
+Mack_Emma,2025,Fantome,3,2,0,0
+Mack_Emma,2025,Fantome,3,3,0,0
+Mack_Emma,2025,Fantome,3,4,0,0
+Alex_Lambo,2025,NE Orpheus,1,1,50,Other
+Alex_Lambo,2025,NE Orpheus,1,2,0,0
+Alex_Lambo,2025,NE Orpheus,1,3,0,0
+Alex_Lambo,2025,NE Orpheus,1,4,0,0
+Alex_Lambo,2025,NE Orpheus,2,1,0,0
+Alex_Lambo,2025,NE Orpheus,2,2,2,Branching
+Alex_Lambo,2025,NE Orpheus,2,3,0,0
+Alex_Lambo,2025,NE Orpheus,2,4,2,Branching
+Alex_Lambo,2025,NE Orpheus,3,1,0,0
+Alex_Lambo,2025,NE Orpheus,3,2,0,0
+Alex_Lambo,2025,NE Orpheus,3,3,0,0
+Alex_Lambo,2025,NE Orpheus,3,4,0,0
+Alex_Lambo,2025,Fantome,1,1,0,0
+Alex_Lambo,2025,Fantome,1,2,0,0
+Alex_Lambo,2025,Fantome,1,3,0,0
+Alex_Lambo,2025,Fantome,1,4,0,0
+Alex_Lambo,2025,Fantome,2,1,0,0
+Alex_Lambo,2025,Fantome,2,2,0,0
+Alex_Lambo,2025,Fantome,2,3,0,0
+Alex_Lambo,2025,Fantome,2,4,0,0
+Alex_Lambo,2025,Fantome,3,1,0,0
+Alex_Lambo,2025,Fantome,3,2,0,0
+Alex_Lambo,2025,Fantome,3,3,0,0
+Alex_Lambo,2025,Fantome,3,4,0,0
+adith_emmanuel,2025,Fantome,1,0,0,0
+adith_emmanuel,2025,Fantome,2,0,0,0
+adith_emmanuel,2025,Fantome,3,4,1,Other
+adith_emmanuel,2025,NE Orpheus,1,0,0,0
+adith_emmanuel,2025,NE Orpheus,2,0,0,0
+adith_emmanuel,2025,NE Orpheus,3,0,0,0

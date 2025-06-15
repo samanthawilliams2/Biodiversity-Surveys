@@ -107,5 +107,86 @@ ggplot(coral.mean, aes(x=Site,y=meanAbund, color=group)) +
   scale_y_continuous(expression("Mean number of individuals "*m^-2*"" * "\u00B1" * "SE"))
 ```
 
+## 2025 Coral Data
+
+```{r}
+coral_2025 = read.csv("data/ClassData_CoralAbundance.csv", strip.white = T, header = T)
+head(coral_2025)
+
+# Replace column names with the first row of data
+colnames(coral_2025) <- as.character(coral_2025[1, ])
+
+# Remove that first row (since it’s now the column names)
+coral_2025 <- coral_2025[-1, ]
+
+# Reset row names
+rownames(coral_2025) <- NULL
+
+coral_2025 = coral_2025 %>%
+  mutate(BuddyPair=factor(BuddyPair),
+         Year=as.numeric(Year),
+         Zone=factor(Zone),
+         Site=factor(Site),
+         Transect=factor(Transect),
+         Type=factor(Type),
+         Genus=factor(Genus),
+         HealthStatus=factor(HealthStatus),
+         Count=as.numeric(Count))
+
+coral_2025 = coral_2025 %>%
+  filter(BuddyPair != "Taylor_Gemma") # remove the mock data 
+
+```
+
+
+## 2019 and 2015 Coral Data Combined 
+
+```{r}
+# get the data in the same format and then merge
+head(coral_2025)
+coral_2019 <- coral_data.1 %>%
+  pivot_longer(cols = all_of(taxon_cols), names_to = "taxon", values_to = "value") %>%
+  mutate(group = taxa_groups[taxon])
+head(coral_2019)
+
+coral_2019 = coral_2019 %>%
+  mutate(Year = as.numeric(2019),
+         Transect = Replicate,
+         Genus = taxon,
+         HealthStatus="Healthy",
+         Count = as.numeric(value),
+         Type = group)
+
+head(coral_2019)
+head(coral_2025)
+coral_2019_2025 = full_join(coral_2025[,-1], coral_2019)
+coral_2019_2025 = coral_2019_2025[,1:8] %>%
+  mutate(Site=factor(Site))
+head(coral_2019_2025) # you can use this merged dataset for analysis 
+
+coral_2019_2025 = coral_2019_2025 %>%
+  mutate(Count = replace_na(Count, 0)) # remove NA values 
+
+# rename sites to match 
+coral_2019_2025 = coral_2019_2025 %>%
+  mutate(Site = as.character(Site),  # convert to character for replacement
+         Site = ifelse(Site == "Little Pioneer Bay North", "Pioneer", Site),
+         Site = factor(Site))  # convert back to factor if needed
+```
+
+## 2019 and 2015 Coral Analysis 
+
+Total Coral Counts per Site Between Years
+```{r}
+coral_counts = coral_2019_2025 %>%
+  group_by(Site, Year) %>%
+  summarise(TotalCount = sum(Count, na.rm = TRUE)) %>%
+  ungroup()
+
+ggplot(coral_counts, aes(x = Site, y = TotalCount, fill = factor(Year))) +
+  geom_col(position = "dodge") +
+  labs(x = "Site", y = "Total Coral Count", fill = "Year") +
+  theme_classic()
+```
 
 

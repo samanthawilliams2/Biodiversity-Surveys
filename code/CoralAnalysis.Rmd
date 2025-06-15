@@ -1,0 +1,111 @@
+---
+title: "Coral Data"
+author: "Samantha Williams"
+date: '2025-06-15'
+output: html_document
+---
+
+```{r}
+library(lubridate)
+library(tidyverse)
+library(ggplot2)
+```
+
+## 2019 Coral Data
+Pre-processing and tidying:
+```{r}
+coral_data = read.csv("data/ClassDataset_2019_coral.csv", strip.white = T,  header = F)
+head(coral_data)
+coral_data=t(coral_data) # transpose the data
+coral_data = coral_data[-1,] # remove row 1
+colnames(coral_data) <-coral_data[1,] # assign column names
+coral_data=as.data.frame(coral_data[-1:-2,-3:-4]) # remove rows and columns that won't be used
+head(coral_data)
+
+coral_data = coral_data %>%
+  mutate(Site=factor(Site), # define site as a factor
+         Date = dmy(paste0(Date, "-2019")), # define date as a date
+         Replicate=factor(Replicate))
+
+levels(coral_data$Site) # there are many errors in site name spelling. These must be fixed
+coral_data.1 = coral_data %>%
+  mutate(
+    Site = fct_collapse(Site, # collapse the levels of Site 
+                        "Cattle Bay" = c("Cattle Bay", "Cattle bay"),
+                        "Clam Gardens" = c("Clam Gard.", "Clam Garden", "Clam Gardens"),
+                        "Hazard Bay" = c("Hazard Bay", "Hazard"),
+                        "Iris Point" = c("Ires Point", "Iris", "Iris Point", "Iris Pt", "Iris point"),
+                        "Little Pioneer Bay South" = c("Little Pioneer Bay South", "Little Pioneer bay South", "Pioneer Bay"),
+                        "Snapper Point" = c("Snapper point", "Snapper point", "Snapper Pont"),
+                        "Southwest Pelorus" = c("South West Pelorus", "Southwest Pelorus vist #2", "SW Peloris", "SW Pelorus", "SW Pelorus visit #2")
+    ))
+levels(coral_data.1$Site) # check for duplicates
+
+# each row is a transect. Get a count of replicate transects per site
+reps.per.site.coral = coral_data.1 %>%
+  group_by(Site) %>%
+  summarise(nTransects = length(Site))
+reps.per.site.coral
+
+# make a figure
+head(coral_data.1)
+
+# group into benthic categories
+colnames(coral_data.1)
+
+taxa_groups <- rep(NA, ncol(coral_data.1))
+taxa_groups[4:36] <- "Hard coral" # columns 4-36 are coral
+taxa_groups[37:45] <- "Soft Corals"
+taxa_groups[46:51] <- "Macroalgae"
+taxa_groups[52:54] <- "Hard coral"
+taxa_groups[55:56] <- "Soft Corals"
+taxa_groups[57] <- "Hard coral"
+taxa_groups[58] <- "Other" 
+taxa_groups[59:61] <- "Hard coral"
+taxa_groups[62:64] <- "Soft Corals"
+
+# Name the vector with the actual column names
+names(taxa_groups) <- colnames(coral_data.1)
+taxon_cols <- names(taxa_groups)[!is.na(taxa_groups)]
+
+df_long <- coral_data.1 %>%
+  pivot_longer(cols = all_of(taxon_cols), names_to = "taxon", values_to = "value") %>%
+  mutate(group = taxa_groups[taxon])
+
+df_long = df_long %>%
+  mutate(group=factor(group),
+         value=as.numeric(value)) %>%
+  group_by(Site,group,Replicate) %>%
+  summarise(total = sum(value, na.rm = TRUE)) #%>%
+  #pivot_wider(names_from = group, values_from = total) # run this line if you want to re-convert to wide format
+
+# take a mean of the replicate transects
+# make a function for standard error
+std<- function(x) sd(x)/sqrt(length(x))
+
+coral.mean = df_long %>%
+  group_by(Site,group) %>%
+  summarise(meanAbund= mean(total/10), # divide by 10 to get per m
+            SE=std(total/10))
+```
+
+## Figures (2019 Coral)
+```{r}
+# Mean number of individuals per site
+# Bar
+ggplot(coral.mean, aes(x = Site, y = meanAbund, fill = group)) + 
+  geom_col() +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)) +
+  scale_y_continuous(expression("Mean number of individuals "*m^-2*""))
+
+# Point range
+ggplot(coral.mean, aes(x=Site,y=meanAbund, color=group)) + 
+  geom_pointrange(aes(ymin=meanAbund-SE, ymax=meanAbund+SE),position=position_dodge(width=0.5)) +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))+
+  scale_y_continuous(expression("Mean number of individuals "*m^-2*"" * "\u00B1" * "SE"))
+```
+
+
+

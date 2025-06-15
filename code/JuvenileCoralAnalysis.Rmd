@@ -47,11 +47,56 @@ juveniles.2025 <- juveniles.2025 %>%
 juveniles.2025 = juveniles.2025 %>%
   mutate(Quadrat=factor(Quadrat))
 
-juveniles$Year <- as.factor(juveniles$Year)
-juveniles.2025$Year <- as.factor(juveniles.2025$Year)
+```
 
-juveniles.longterm <- full_join(juveniles[,-1], juveniles.2025[,-1])
+```{r}
+# Merge and clean long-term juvenile coral data
+juveniles.longterm <- full_join(juveniles[,-1], juveniles.2025[,-1]) %>%
+  mutate(
+    Morphology = fct_collapse(Morphology,
+                              "Branching" = c("Branching", "Brancing"),
+                              "Other" = c("Other", "other", "O")),
+    Site = fct_collapse(Site,
+                        "Cattle Bay" = c("Cattle Bay", "Cattle_Bay"), 
+                        "Fantome" = c("Fantom", "Fantome"), 
+                        "Pioneer" = c("Pioneer", "LPioneer_Bay", "Pioneer Bay"), 
+                        "NE Orpheus" = c("NE Orpheus", "NE_Orpheus", "NE ORIS")),
+    YearGroup = case_when(
+      Year %in% c("2019", "2020", "2021") ~ "2019 to 2021",
+      Year == "2025" ~ "2025",
+      TRUE ~ as.character(Year)
+    )
+  ) %>%
+  filter(
+    !Morphology %in% c("N/A", "0", "", "branching/other"),
+    !Site %in% c("NE_Pelorus", "SE_Pelorus", "W_Pelorus")
+  )
 
-juveniles.longterm = full_join(juveniles[,-1], juveniles.2025[,-1])
+# Summarise mean counts
+mean_counts <- juveniles.longterm %>%
+  group_by(Site, Size, Morphology, YearGroup) %>%
+  summarise(mean_count = mean(Count, na.rm = TRUE), .groups = "drop")
+
+
+```
+
+Plot mean juvenile counts:
+```{r}
+ggplot(mean_counts, aes(x = Site, y = mean_count, fill = Morphology)) +
+  geom_col(position = "dodge") +
+  facet_grid(YearGroup ~ Size, scales = "free_y", space = "free") +
+  labs(
+    x = "Site",
+    y = "Mean Count",
+    fill = "Morphology"
+  ) +
+  theme_classic(base_size = 12) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1, size = 10),
+    strip.text.x = element_text(face = "bold", size = 12),  # Size categories
+    strip.text.y = element_text(face = "bold", size = 12),  # Year groups
+    axis.title = element_text(face = "bold", size = 13),
+    legend.title = element_text(face = "bold")
+  )
 ```
 

@@ -176,17 +176,44 @@ coral_2019_2025 = coral_2019_2025 %>%
 
 ## 2019 and 2015 Coral Analysis 
 
-Total Coral Counts per Site Between Years
+Compare Total Coral Count Between 2019 and 2025 (All Sites Combined)
 ```{r}
-coral_counts = coral_2019_2025 %>%
-  group_by(Site, Year) %>%
-  summarise(TotalCount = sum(Count, na.rm = TRUE)) %>%
+coral_health_status <- coral_2019_2025 %>%
+  mutate(HealthStatus = ifelse(HealthStatus == "" | is.na(HealthStatus), "Healthy", HealthStatus)) %>%
+  group_by(Year, HealthStatus) %>%
+  summarise(Total = sum(Count, na.rm = TRUE)) %>%
   ungroup()
 
-ggplot(coral_counts, aes(x = Site, y = TotalCount, fill = factor(Year))) +
-  geom_col(position = "dodge") +
-  labs(x = "Site", y = "Total Coral Count", fill = "Year") +
-  theme_classic()
+ggplot(coral_health_status, aes(x = factor(Year), y = Total, fill = HealthStatus)) +
+  geom_col(position = "fill") +
+  scale_y_continuous(labels = scales::percent) +
+  labs(x = "Year", y = "Proportion of Coral Health Status", fill = "Health Status") +
+  theme_classic() +
+  theme(
+    axis.title = element_text(size = 13, face = "bold"),
+    axis.text = element_text(size = 11),
+    legend.title = element_text(size = 12),
+    legend.text = element_text(size = 11)
+  )
 ```
 
+```{r}
+# mean coral count per transect for each year, with standard deviation and sample size as there is such a big difference in sampling effort between years.
+coral_effort_adjusted <- coral_2019_2025 %>%
+  group_by(Year, Transect) %>%
+  summarise(Total = sum(Count, na.rm = TRUE)) %>%
+  group_by(Year) %>%
+  summarise(MeanCount = mean(Total), SD = sd(Total), N = n())
+
+ggplot(coral_effort_adjusted, aes(x = factor(Year), y = MeanCount)) +
+  geom_col(fill = "#69b3a2", width = 0.6) +
+  geom_errorbar(aes(ymin = MeanCount - SD, ymax = MeanCount + SD), 
+                width = 0.2, color = "black") +
+  labs(x = "Year", y = "Mean Coral Count per Transect") +
+  theme_classic() +
+  theme(
+    axis.title = element_text(size = 13, face = "bold"),
+    axis.text = element_text(size = 11)
+  )
+```
 

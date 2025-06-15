@@ -217,3 +217,149 @@ ggplot(coral_effort_adjusted, aes(x = factor(Year), y = MeanCount)) +
   )
 ```
 
+
+## Coral Cover from PITs - 2016-2022
+```{r}
+# we don't have the raw data, just means of all transects per student group
+
+coral.cover = read.csv("data/ClassDataset_2016-2022_coralcover.csv", strip.white = T, header = T)
+head(coral.cover)
+
+coral.cover = coral.cover %>%
+  mutate(Year=factor(Year),
+         Zone=factor(Zone),
+         Site=factor(Site))
+
+reps.per.site.cover = coral.cover %>%
+  group_by(Site,Year) %>%
+  summarise(nTransects = length(Site))
+reps.per.site.cover
+
+```
+
+Plot number of transects per site 
+```{r}
+ 
+ggplot(reps.per.site.cover, aes(x=Year, y=nTransects, color=Site)) +
+  geom_point() +
+  geom_line( aes(group=Site)) +
+  theme_classic()
+
+reps.per.site.cover <- reps.per.site.cover %>%
+  pivot_wider(
+    names_from = Year,
+    values_from = nTransects
+  )
+
+reps.per.site.cover
+```
+
+Merge coral cover with 2015 Data
+```{r}
+coral.cover.2025 = read.csv("data/ClassData_PIT.csv", strip.white = T, header = T)
+head(coral.cover.2025)
+# merge with long-term data
+
+colnames(coral.cover.2025) <- as.character(coral.cover.2025[1, ])
+
+coral.cover.2025 <- coral.cover.2025[-1, ]
+
+rownames(coral.cover.2025) <- NULL
+
+
+head(coral.cover) # long-term data
+# need to calculate percent cover
+# then take a mean of the three transects per buddy pair to match the format of long-term data
+# note the limitations of doing such a step
+
+# Convert necessary columns to numeric
+coral.cover.2025 <- coral.cover.2025 %>%
+  mutate(across(c(Acropora, Massive, OtherHard, AllAlgae, SoftCoral, Other, Total), as.numeric))
+
+coral.cover.2025.calc = coral.cover.2025 %>%
+  mutate(Acropora=Acropora/Total,
+         Massive=Massive/Total,
+         AllHard=OtherHard/Total, # rename the column to AllHard to match the long-term data
+         AllAlgae =AllAlgae/Total,
+         SoftCoral = SoftCoral/Total,
+         Other=Other/Total)
+head(coral.cover.2025.calc)
+
+coral.cover.2025.summary = coral.cover.2025.calc %>%
+  group_by(BuddyPair, Year, Site) %>%
+  mutate(Year = factor(Year)) %>%
+  summarise(across(
+    c(Acropora, Massive, AllHard, SoftCoral, AllAlgae, Other), mean, .names = "{.col}"))
+
+head(coral.cover.2025.summary)
+head(coral.cover)
+# formats match, now merge
+coral.cover.longterm = full_join(coral.cover.2025.summary[,-1], coral.cover)
+head(coral.cover.longterm) # use this for your analysis, though NOTE you will need to rename sites to match. Relevant code for re-naming sites is included in this script
+
+```
+
+## Coral Cover with 2015 data analysis
+```{r}
+coral.cover.longterm <- coral.cover.longterm %>%
+  mutate(
+    Site = fct_collapse(Site, # Note: can't remember if snapper is same as pioneer point
+                        "Cattle Bay" = c("Cattle Bay", "Cattle bay", "Catlle Bay", "Cattle bay", "Cattle", "Cattle_Bay", "CattleMid"), 
+                        "Fantome" = c("Fantom", "Fantome", "NEFantome"), 
+                        "Pioneer" = c("Pioneer", "LPioneer_Bay", "Pioneer Bay", "LittlePioneerSth", "PioneerPoint", "Little Pioneer bay South", "Little Pioneer Bay South", "Little Pioneer bay South"), 
+                        "NE Orpheus" = c("NE Orpheus", "NE_Orpheus", "NE ORIS", "NEOrpheus"))
+  ) %>%
+  filter(Site %in% c("Cattle Bay", "Fantome", "Pioneer", "NE Orpheus")) %>%
+  group_by(Year, Site) %>%
+  summarise(
+    Acropora = mean(Acropora),
+    Massive = mean(Massive),
+    AllHard = mean(AllHard),
+    SoftCoral = mean(SoftCoral),
+    AllAlgae = mean(AllAlgae),
+    Other = mean(Other),
+    .groups = "drop"
+  )
+
+coral_long <- coral.cover.longterm %>%
+  pivot_longer(cols = c(Acropora, Massive, AllHard, SoftCoral, AllAlgae, Other),
+               names_to = "Type",
+               values_to = "Percentage")
+
+
+```
+
+Plot
+```{r}
+# Facet by site 
+# Coral Composition by Site and Year
+coral_long <- coral_long %>%
+  mutate(Year = as.numeric(as.character(Year))) %>%
+  mutate(Year = factor(Year, levels = sort(unique(Year))))
+ggplot(coral_long, aes(x = Year, y = Percentage, fill = Type)) +
+  geom_bar(stat = "identity") +
+  facet_wrap(~Site) +
+  labs(y = "Composition Percentage") +
+  scale_y_continuous(labels = scales::percent_format()) +
+  theme_classic()
+
+```
+
+```{r}
+
+coral_long$Year <- as.numeric(as.character(coral_long$Year))
+# Substrate Type Trends by Site
+ggplot(coral_long, aes(x = Year, y = Percentage, color = Type, group = Type)) +
+  geom_line(size = 1) +
+  geom_point(size = 2) +
+  facet_wrap(~Site) +
+  labs(x = "Year",
+       y = "Mean Percentage Cover",
+       color = "Type") +
+  scale_y_continuous(labels = scales::percent_format()) +
+  scale_x_continuous(breaks = unique(coral_long$Year)) +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+```
+

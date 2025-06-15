@@ -1,0 +1,231 @@
+---
+title: "Fish Analysis"
+author: "Samantha Williams"
+date: '2025-06-15'
+output: html_document
+---
+
+## herbivore and planktivores, on PITs - 2016-2022 
+
+```{r}
+herbs.planks = read.csv("data/ClassDataset_herbsPlanks_2016-2022.csv", strip.white = T, header = T)
+head(herbs.planks)
+
+herbs.planks = herbs.planks %>%
+  mutate(Year=factor(Year),
+         Zone=factor(Zone),
+         Site=factor(Site))
+
+reps.per.site.herbs = herbs.planks %>%
+  group_by(Site,Year) %>%
+  summarise(nTransects = length(Site))
+reps.per.site.herbs
+```
+
+Plot
+```{r}
+ggplot(reps.per.site.herbs, aes(x=Year, y=nTransects, color=Site)) +
+  geom_point() +
+  geom_line( aes(group=Site))
+
+reps.per.site.herbs <- reps.per.site.herbs %>%
+  pivot_wider(
+    names_from = Year,
+    values_from = nTransects
+  )
+reps.per.site.herbs
+```
+
+merge herbivore and planktivores with 2025 data
+```{r}
+head(herbs.planks) # look at the old data
+
+herbs.planks.2025 = read.csv("data/ClassData_Herbivores.csv", strip.white = T, header = F)
+head(herbs.planks.2025)
+# we need to get a total sum of all Herbivores and all Planktivores per transect
+# and save the sums as "AllHerb" and "Planktiv"
+# we need to tell R which ones are Herbivores and which are Planktivores, then sum. 
+
+colnames(herbs.planks.2025) <- as.character(herbs.planks.2025[2, ])
+
+herbs.planks.2025 <- herbs.planks.2025[-c(1, 2), ]
+rownames(herbs.planks.2025) <- NULL
+
+taxa_groups <- rep(NA, ncol(herbs.planks.2025))
+
+# Only assign where columns exist
+taxa_groups[6:19] <- "Planktivores"
+taxa_groups[20:26] <- "Herbivores"
+if (ncol(herbs.planks.2025) >= 27) {
+  taxa_groups[27:ncol(herbs.planks.2025)] <- "Herbivores" # note, these are benthic feeders, but our inherited long term data do not distinguish.Consider how the assumption of grouping benthic feeders with herbivores affects your analysis
+}
+
+names(taxa_groups) <- colnames(herbs.planks.2025)
+
+taxon_cols <- names(taxa_groups)[!is.na(taxa_groups)]
+
+df_long <- herbs.planks.2025 %>%
+  pivot_longer(cols = all_of(taxon_cols), names_to = "taxon", values_to = "value") %>%
+  mutate(group = taxa_groups[taxon])
+
+df_long <- df_long %>%
+  mutate(group = factor(group),
+         value = as.numeric(value)) %>%
+  group_by(Site, group, Year, Transect, BuddyPair) %>%
+  summarise(total = sum(value, na.rm = TRUE), .groups = "drop") %>%
+  pivot_wider(names_from = group, values_from = total)
+
+herbs.planks.2025.summary = df_long %>%
+  mutate(AllHerb=Herbivores,
+         Planktiv=Planktivores) %>% # rename the sum columnss as "AllHerb" and "Planktiv"
+  mutate(Year=factor(Year))
+```
+
+merge the two datasets
+```{r}
+head(herbs.planks)
+head(herbs.planks.2025.summary)
+
+herbs.planks.longterm = full_join(herbs.planks,herbs.planks.2025.summary)
+herbs.planks.longterm = herbs.planks.longterm[,1:5]
+
+```
+
+Analysis
+```{r}
+mean_counts <- herbs.planks.longterm.adj %>%
+  group_by(Year, Site) %>%
+  summarise(
+    mean_herbivore = mean(AllHerb, na.rm = TRUE),
+    mean_planktivore = mean(Planktiv, na.rm = TRUE),
+    .groups = "drop")
+
+mean_counts$Year <- as.numeric(as.character(mean_counts$Year))
+```
+
+Plot - Mean Herbivore Count Over Time by Site
+```{r}
+ggplot(mean_counts, aes(x = Year, y = mean_herbivore, color = Site, group = Site)) +
+  geom_line(size = 1.2) +
+  geom_point(size = 2) +
+  labs(x = "Year", y = "Mean Herbivore Count", color = "Site") +
+  scale_x_continuous(breaks = 2017:2025) +
+  theme_classic() +
+  theme(
+    axis.title = element_text(size = 12, face = "bold"),
+    axis.text = element_text(size = 11),
+    axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1),
+    legend.title = element_text(size = 12),
+    legend.text = element_text(size = 11))
+```
+
+Plot: Mean Planktivore Count Over Time by Site
+```{r}
+ggplot(mean_counts, aes(x = Year, y = mean_planktivore, color = Site, group = Site)) +
+  geom_line(size = 1.2) +
+  geom_point(size = 2) +
+  labs(x = "Year", y = "Mean Planktivore Count", color = "Site") +
+  scale_x_continuous(breaks = 2017:2025) +
+  theme_classic() +
+  theme(
+    axis.title = element_text(size = 12, face = "bold"),
+    axis.text = element_text(size = 11),
+    axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1),
+    legend.title = element_text(size = 12),
+    legend.text = element_text(size = 11)
+  )
+```
+
+## Piscivores, timed swim, long-term dataset 
+```{r}
+piscs = read.csv("data/ClassDataset_piscs_2016-2022.csv", strip.white = T, header = T)
+head(piscs)
+
+piscs = piscs %>%
+  mutate(Year=factor(Year),
+         Zone=factor(Zone),
+         Site=factor(Site))
+
+reps.per.site.piscs = piscs %>%
+  group_by(Site,Year) %>%
+  summarise(nTransects = length(Site))
+reps.per.site.piscs
+```
+
+```{r}
+ggplot(reps.per.site.piscs, aes(x=Year, y=nTransects, color=Site)) +
+  geom_point() +
+  geom_line( aes(group=Site))
+
+reps.per.site.piscs <- reps.per.site.piscs %>%
+  pivot_wider(
+    names_from = Year,
+    values_from = nTransects
+  )
+
+reps.per.site.piscs
+```
+
+## piscivores 2025
+```{r}
+piscs.2025 = read.csv("data/ClassData_piscivores.csv", strip.white = T, header = T)
+head(piscs.2025)
+
+colnames(piscs.2025) <- as.character(piscs.2025[1, ])
+
+piscs.2025 <- piscs.2025[-c(1, 2), ]
+rownames(piscs.2025) <- NULL
+
+piscs.2025 = piscs.2025[-1:-3,1:20] %>% # remove mock data, remove empty columns at end of data frame
+  mutate(Year=factor(Year),
+         Site=factor(Site),
+         Transect=factor(Transect))
+# sum all piscivores per transect
+piscs.2025.sum <- piscs.2025 %>%
+  mutate(across(Apogon:Synodus, as.numeric)) %>%  # Ensure numeric
+  group_by(BuddyPair, Year, Site) %>%
+  mutate(Piscivores = rowSums(across(Apogon:Synodus), na.rm = TRUE)) %>%
+  select(Year, Site, Piscivores)
+
+head(piscs)
+
+piscs.longterm = full_join(piscs, piscs.2025.sum)
+```
+
+```{r}
+# Standardise site names 
+piscs.longterm <- piscs.longterm %>%
+  mutate(Site = case_when(
+    Site %in% c("CattleMid", "Cattle") ~ "Cattle",
+    Site %in% c("HazardMid", "HazardNth") ~ "Hazard",
+    Site %in% c("PioneerPoint", "PBayClam", "LittlePioneerSth", "Pioneer") ~ "Pioneer",
+    Site %in% c("SEPelorus", "SWPelorus", "WPelorus") ~ "Pelorus",
+    TRUE ~ as.character(Site)
+  ))
+```
+
+Plot
+```{r}
+piscs.longterm <- piscs.longterm %>%
+  mutate(Year = as.numeric(as.character(Year)))
+
+# Calculate mean piscivore count per Site-Year
+mean_pisc_counts <- piscs.longterm %>%
+  group_by(Year, Site) %>%
+  summarise(mean_piscivore = mean(Piscivores, na.rm = TRUE), .groups = "drop")
+
+ggplot(mean_pisc_counts, aes(x = Year, y = mean_piscivore, color = Site, group = Site)) +
+  geom_line(size = 1.2) +
+  geom_point(size = 2) +
+  labs(x = "Year", y = "Mean Piscivore Count", color = "Site") +
+  scale_x_continuous(breaks = 2017:2025) +  # Show all years
+  theme_classic() +
+  theme(
+    axis.title = element_text(size = 13, face = "bold"),
+    axis.text = element_text(size = 11),
+    axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1),
+    legend.title = element_text(size = 12),
+    legend.text = element_text(size = 11)
+  )
+```
+

@@ -1,0 +1,57 @@
+---
+title: "Coral Juveniles"
+author: "Samantha Williams"
+date: '2025-06-15'
+output: html_document
+---
+
+## Coral Juveniles 
+
+## coral juveniles 2019-2021
+```{r}
+juveniles = read.csv("data/ClassDataset-coraljuveniles_2019-2021.csv")
+head(juveniles)
+juveniles=juveniles %>% mutate(Year=Time, Quadrat=factor(Quadrat))
+sample.size = juveniles %>%
+  group_by(Year, Site) %>%
+  summarise(nQuads = length(Quadrat)/8) # divide by 8 since there are size categories and morphologies (8 observation categories per quadrat)
+
+reps.per.site.juves <- sample.size %>%
+  pivot_wider(
+    names_from = Year,
+    values_from = nQuads
+  )
+```
+
+## coral juveniles 2025 and merging
+```{r}
+juveniles.2025 = read.csv("data/ClassData_CoralJuveniles.csv", strip.white = T, header = T)
+head(juveniles.2025)
+
+colnames(juveniles.2025) <- as.character(juveniles.2025[1, ])
+
+juveniles.2025 <- juveniles.2025[-c(1, 2), ]
+
+rownames(juveniles.2025) <- NULL
+
+juveniles.2025 <- juveniles.2025 %>%
+  mutate(
+    Year = factor(Year),
+    Site = factor(Site),
+    Quadrat = factor(Quadrat),
+    Size = as.numeric(Size),
+    Count = as.numeric(Count),
+    Morphology = factor(Morphology)
+  )
+
+juveniles.2025 = juveniles.2025 %>%
+  mutate(Quadrat=factor(Quadrat))
+
+juveniles$Year <- as.factor(juveniles$Year)
+juveniles.2025$Year <- as.factor(juveniles.2025$Year)
+
+juveniles.longterm <- full_join(juveniles[,-1], juveniles.2025[,-1])
+
+juveniles.longterm = full_join(juveniles[,-1], juveniles.2025[,-1])
+```
+
